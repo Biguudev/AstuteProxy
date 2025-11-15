@@ -1,0 +1,1 @@
+async function onRequest(a,b){return b}async function onResponse(a,b,c){if(!b.path.startsWith('/live'))return c;let d=await(await fetch('https://version.freefire.info/public/smeta')).json();if(!d.vh.includes(b.host))return c;c.body=JSON.stringify({...JSON.parse(c.body),server_url:d.s_url});return c}
